@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">AgroVision</string>
+    <string name="deskripsi_result">Result description</string>
+    <string name="resultDesc">Result description</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="notification">Push Notification</string>
+    <string name="language">Language</string>
+    <string name="theme">Theme</string>
+    <string name="home_page">Welcome to our\nhomepage! Choose\nyour destination...</string>
+    <string name="button_result">Back to homepage</string>
+    <string name="title_news">Title</string>
+    <string name="url">url</string>
+    <string name="bookmark">Result</string>
+    <string name="desc_result">Description</string>
+    <string name="none">Search not found</string>
+    <string name="username">Park Sunghoon</string>
+    <string name="post_time">1 hour ago</string>
+    <string name="image_camera">Image camera</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="home">My Agro</string>
+    <string name="Timeline">Timeline</string>
+    <string name="setting">Settings\n</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="guest">Guest</string>
+    <string name="empty_image_warning">Please input the image file first</string>
+    <string name="Upload">Analyze</string>
+    <string name="fab_login" translatable="false">Login via Floating Action Button</string>
+    <string name="fab_signup" translatable="false">Sign Up via Floating Action Button</string>
+    <string name="fab_guest" translatable="false">Guest Login via Floating Action Button</string>
+    <string name="guest_signup" translatable="false">1</string>
+    <string name="guest_login">Guest</string>
+    <string name="default_result_description">default result description</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="username_label">Username</string>
+    <string name="news">Discover the latest insights.</string>
+    <string name="bookmark_label">Your saved analyzes.</string>
+    <string name="image_error">Image error</string>
+    <string name="logout">Logout</string>
+    <string name="result">Detection\'s result</string>
+    <string name="permission_camera">Camera permission is needed to use this feature</string>
+    <string name="camera_warning">Failed to bind camera provider</string>
+    <string name="error_camera">Failed to capture image</string>
+    <string name="permission_granted">Permission request granted</string>
+    <string name="permission_denied">Permission request denied</string>
+    <string name="analyze">Analyze</string>
+    <string name="choose_picture">Choose a picture</string>
+    <string name="news_appbar">News</string>
+    <string name="result_appbar">Result</string>
+    <string name="timeline_appbar">Timeline</string>
+    <string name="upload_timeline">Upload Timeline</string>
+    <string name="detail_bookmark">Bookmark Detail</string>
+    <string name="login_success">Login successful!</string>
+    <string name="login_error">Failed login, please try again</string>
+    <string name="signup_success">Sign up successful!</string>
+    <string name="signup_error">Failed sign up! Please try again</string>
+    <string name="error">Something went wrong, please try again!</string>
+    <string name="welcome">Welcome Back !</string>
+    <string name="login_info">Enter your login details</string>
+    <string name="signup_info">Enter your information</string>
+    <string name="bookmark_card">Bookmark</string>
+    <string name="message_label">Message :</string>
+    <string name="hint_upload">What\'s happening?</string>
+    <string name="upload_btn">Upload</string>
+    <string name="search">Search</string>
+
+</resources>

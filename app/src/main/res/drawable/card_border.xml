@@ -1,0 +1,19 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer border -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="2dp"
+                android:color="#000000" /> <!-- Ubah warna border sesuai kebutuhan -->
+            <corners android:radius="10dp" /> <!-- Sesuaikan dengan corner radius CardView -->
+        </shape>
+    </item>
+    <!-- Inner background -->
+    <item android:top="2dp" android:bottom="2dp" android:left="2dp" android:right="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Ubah warna background sesuai kebutuhan -->
+            <corners android:radius="8dp" /> <!-- Sesuaikan dengan corner radius yang lebih kecil untuk background -->
+        </shape>
+    </item>
+</layer-list>

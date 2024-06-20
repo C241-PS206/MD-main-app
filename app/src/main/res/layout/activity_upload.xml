@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".view.upload.UploadActivity"
+    tools:ignore="ExtraText">
+
+    <TextView
+        android:id="@+id/messageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/message_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/messageEditText"
+        android:layout_width="0dp"
+        android:layout_height="165dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/hint_upload"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:gravity="top|start"
+        app:layout_constraintTop_toBottomOf="@id/messageLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/previewImage"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_placeholder"
+        app:layout_constraintTop_toBottomOf="@id/messageEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/iconButton1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_background"
+        android:src="@drawable/ic_galery"
+        app:layout_constraintTop_toTopOf="@+id/postButton"
+        app:layout_constraintBottom_toBottomOf="@+id/postButton"
+        app:layout_constraintEnd_toStartOf="@+id/iconButton2"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/iconButton2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="550dp"
+        android:background="@drawable/button_background"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintTop_toTopOf="@+id/postButton"
+        app:layout_constraintBottom_toBottomOf="@+id/postButton"
+        app:layout_constraintEnd_toStartOf="@+id/postButton"
+        app:layout_constraintStart_toEndOf="@+id/iconButton1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/postButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/fab_camera"
+        android:text="@string/upload_btn"
+        android:textColor="#336016"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/previewImage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

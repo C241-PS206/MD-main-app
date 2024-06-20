@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AgroVision" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationNoShadow</item>
+        <item name="actionBarTheme">@style/ActionBar.White</item>
+    </style>
+
+    <style name="BottomNavigationNoShadow" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="NoActionBarTheme" parent="@style/Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="Theme.AgroVision" parent="Base.Theme.AgroVision" />
+
+    <style name="ActionBar.White" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/white</item>
+        <item name="titleTextColor">@color/black</item>
+        <item name="subtitleTextColor">@color/black</item>
+    </style>
+</resources>
