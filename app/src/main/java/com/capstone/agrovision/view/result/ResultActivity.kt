@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.capstone.agrovision.R
 import com.capstone.agrovision.data.local.AppDatabase
-import com.capstone.agrovision.data.local.Bookmark
+import com.capstone.agrovision.data.local.BookmarkResult
 import com.capstone.agrovision.view.HomeActivity
 import com.capstone.agrovision.view.bookmark.BookmarkActivity
 import kotlinx.coroutines.Dispatchers
@@ -57,8 +57,6 @@ class ResultActivity : AppCompatActivity() {
         tvResult.text = result ?: getString(R.string.result)
         tvDescriptionResult.text = description ?: getString(R.string.default_result_description)
 
-        updateBookmarkIcon()
-
         checkBookmarkStatus()
 
         btnHome.setOnClickListener {
@@ -101,7 +99,6 @@ class ResultActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             if (isBookmarked) {
                 saveToBookmark()
-                navigateToBookmarkActivity()
             } else {
                 removeFromBookmark()
             }
@@ -109,29 +106,25 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private suspend fun saveToBookmark() {
-        if (imageUri != null && description != null) {
-            val bookmark = Bookmark(imageUri = imageUri!!, result = result ?: "", description = description ?: "")
-            withContext(Dispatchers.IO) {
-                database.bookmarkDao().insertBookmark(bookmark)
-            }
+        if (imageUri != null && result != null) {
+            val bookmark = BookmarkResult(imagePath = imageUri!!, result = result!!)
+            database.bookmarkResultDao().add(bookmark)
         }
     }
 
     private suspend fun removeFromBookmark() {
-        if (imageUri != null && description != null) {
-            withContext(Dispatchers.IO) {
-                val bookmark = database.bookmarkDao().getBookmarkByUriAndDescription(imageUri!!, description!!)
-                bookmark?.let {
-                    database.bookmarkDao().deleteBookmark(it.id)
-                }
+        if (imageUri != null && result != null) {
+            val bookmark = database.bookmarkResultDao().getBookmarkByUriAndResult(imageUri!!, result!!)
+            bookmark?.let {
+                database.bookmarkResultDao().delete(it)
             }
         }
     }
 
     private fun checkBookmarkStatus() {
         lifecycleScope.launch(Dispatchers.IO) {
-            if (imageUri != null && description != null) {
-                val bookmark = database.bookmarkDao().getBookmarkByUriAndDescription(imageUri!!, description!!)
+            if (imageUri != null && result != null) {
+                val bookmark = database.bookmarkResultDao().getBookmarkByUriAndResult(imageUri!!, result!!)
                 isBookmarked = bookmark != null
                 withContext(Dispatchers.Main) {
                     updateBookmarkIcon()
@@ -143,11 +136,6 @@ class ResultActivity : AppCompatActivity() {
     private fun updateBookmarkIcon() {
         val drawableId = if (isBookmarked) R.drawable.ic_bookmark else R.drawable.ic_bookmark_outline
         bookmarkButton.setImageDrawable(ContextCompat.getDrawable(this, drawableId))
-    }
-
-    private fun navigateToBookmarkActivity() {
-        val intent = Intent(this, BookmarkActivity::class.java)
-        startActivity(intent)
     }
 
     companion object {

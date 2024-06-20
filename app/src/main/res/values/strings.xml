@@ -65,5 +65,7 @@
     <string name="hint_upload">What\'s happening?</string>
     <string name="upload_btn">Upload</string>
     <string name="search">Search</string>
+    <string name="delete">Delete</string>
+    <string name="description">Description</string>
 
 </resources>
