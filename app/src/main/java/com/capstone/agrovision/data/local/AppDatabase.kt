@@ -1,4 +1,3 @@
-// AppDatabase.kt
 package com.capstone.agrovision.data.local
 
 import android.content.Context
@@ -6,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Bookmark::class], version = 1)
+@Database(entities = [BookmarkResult::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun bookmarkDao(): BookmarkDao
+
+    abstract fun bookmarkResultDao(): BookmarkDao
 
     companion object {
         @Volatile
@@ -16,13 +16,15 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+                val newInstance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "app_database"
-                ).build()
-                INSTANCE = instance
-                instance
+                    "database_app"
+                )
+                    .fallbackToDestructiveMigration() // Use fallback strategy
+                    .build()
+                INSTANCE = newInstance
+                newInstance
             }
         }
     }

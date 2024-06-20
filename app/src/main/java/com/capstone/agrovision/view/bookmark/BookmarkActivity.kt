@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.agrovision.R
 import com.capstone.agrovision.data.local.AppDatabase
-import com.capstone.agrovision.data.local.Bookmark
+import com.capstone.agrovision.data.local.BookmarkResult
 import com.capstone.agrovision.view.DetailBookmarkActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ class BookmarkActivity : AppCompatActivity() {
     private lateinit var rvBookmark: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var bookmarkAdapter: BookmarkAdapter
-    private var bookmarkList: MutableList<Bookmark> = mutableListOf()
+    private var bookmarkList: MutableList<BookmarkResult> = mutableListOf()
 
     private lateinit var database: AppDatabase
 
@@ -33,9 +33,11 @@ class BookmarkActivity : AppCompatActivity() {
         rvBookmark = findViewById(R.id.rvBookmark)
         progressBar = findViewById(R.id.progressBar)
 
-        bookmarkAdapter = BookmarkAdapter(bookmarkList) { bookmark ->
+        bookmarkAdapter = BookmarkAdapter(bookmarkList, { bookmark ->
             navigateToDetailBookmark(bookmark)
-        }
+        }, { bookmark ->
+            deleteBookmark(bookmark)
+        })
 
         rvBookmark.layoutManager = LinearLayoutManager(this)
         rvBookmark.adapter = bookmarkAdapter
@@ -48,7 +50,7 @@ class BookmarkActivity : AppCompatActivity() {
 
     private fun setUpActionBar() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = getString(R.string.bookmark_card)
+        supportActionBar?.title = "Bookmark"
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -64,7 +66,7 @@ class BookmarkActivity : AppCompatActivity() {
     private fun loadBookmarks() {
         progressBar.visibility = View.VISIBLE
         lifecycleScope.launch(Dispatchers.IO) {
-            val bookmarks = database.bookmarkDao().getAllBookmarks()
+            val bookmarks = database.bookmarkResultDao().getAll()
             bookmarkList.clear()
             bookmarkList.addAll(bookmarks)
             withContext(Dispatchers.Main) {
@@ -74,9 +76,18 @@ class BookmarkActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToDetailBookmark(bookmark: Bookmark) {
-        val intent = Intent(this, DetailBookmarkActivity::class.java)
+    private fun navigateToDetailBookmark(bookmark: BookmarkResult) {
+        val intent = Intent(this, BookmarkActivity::class.java)
         intent.putExtra("bookmark_data", bookmark)
         startActivity(intent)
+    }
+
+    private fun deleteBookmark(bookmark: BookmarkResult) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            database.bookmarkResultDao().delete(bookmark)
+            withContext(Dispatchers.Main) {
+                bookmarkAdapter.removeItem(bookmark)
+            }
+        }
     }
 }
