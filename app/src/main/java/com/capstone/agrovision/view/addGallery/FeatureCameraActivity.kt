@@ -270,7 +270,30 @@ class FeatureCameraActivity : AppCompatActivity() {
                 "Sugarcane Yellow"
             )
 
+            val classDesc = arrayOf(
+                getString(R.string.cassava_bacterial_bright),
+                getString(R.string.cassava_brown_streak),
+                getString(R.string.cassava_green_mottle),
+                getString(R.string.cassava_healthy),
+                getString(R.string.cassava_mosaic),
+                getString(R.string.corn_blight),
+                getString(R.string.corn_gray_leaf_spot),
+                getString(R.string.corn_healthy),
+                getString(R.string.corn_rust),
+                getString(R.string.rice_bacterial_blight),
+                getString(R.string.rice_brown_spot),
+                getString(R.string.rice_healthy),
+                getString(R.string.rice_leaf_blast),
+                getString(R.string.rice_tungro),
+                getString(R.string.sugarcane_healthy),
+                getString(R.string.sugarcane_mosaic),
+                getString(R.string.sugarcane_red_rot),
+                getString(R.string.sugarcane_rust),
+                getString(R.string.sugarcane_yellow)
+            )
+
             result = classes[maxPos]
+            resultDescription = classDesc[maxPos]
 
             model.close()
         } catch (e: IOException){
