@@ -28,12 +28,12 @@ AgroVision's Mobile Development team is responsible for developing a mobile appl
 - Machine Learning: TensorFlow Lite
 - Data Storage: Firebase
 
-## Library
+## System Requirements
 
 - Android 6.0 (Marshmallow) or newer version.
 - Internet connection to access the database and save analysis history.
 
-## System Requirements
+## Library
 
 ```sh
 Kotlin Coroutine Android 
