@@ -101,7 +101,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private val cameraActivityResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { result ->
+    )  { result ->
         if (result.resultCode == RESULT_OK) {
             val imageUri = result.data?.getStringExtra(SettingCameraActivity.EXTRA_CAMERAX_IMAGE)
             imageUri?.let {
